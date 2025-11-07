@@ -1,30 +1,26 @@
 #!/bin/env python3.13
 # /prepare/python/strings/TheMinionGame
-#
+
+
 def minion_game(string):
     # your code goes here
-    vowels = ["A", "E", "I", "O", "U"]
-    stuart_score = 0
-    kevin_score = 0
+    n = len(string)
+    S = string.upper()  # be robust to case
+    vowels = set("AEIOU")
 
-    length = len(string)
-    for i, alpha in enumerate(string):
-        if alpha in vowels:
-            # kevin_score += 1
-            for j in range(1, len(string[i:length]) + 1):
-                if string[i : i + j] in string:
-                    # print(string[i : i + j])
-                    kevin_score += 1
-        elif alpha not in vowels:
-            for j in range(1, len(string[i:length]) + 1):
-                if string[i : i + j] in string:
-                    # print(string[i : i + j])
-                    stuart_score += 1
+    kevin = 0  # vowel player
+    stuart = 0  # consonant player
 
-    if kevin_score < stuart_score:
-        print(f"Stuart {stuart_score}")
-    elif kevin_score > stuart_score:
-        print(f"Kevin {kevin_score}")
+    for i, ch in enumerate(S):
+        if ch in vowels:
+            kevin += n - i
+        else:
+            stuart += n - i
+
+    if kevin > stuart:
+        print(f"Kevin {kevin}")
+    elif stuart > kevin:
+        print(f"Stuart {stuart}")
     else:
         print("Draw")
 
