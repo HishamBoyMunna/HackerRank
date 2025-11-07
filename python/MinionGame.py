@@ -8,11 +8,12 @@ def minion_game(string):
     kevin_score = 0
 
     def get_kevin_score(string, score):
+        length = len(string)
         kevin_score = score
         for i, alpha in enumerate(string):
             if alpha in vowels:
                 # kevin_score += 1
-                for j in range(1, len(string[i : len(string)]) + 1):
+                for j in range(1, len(string[i:length]) + 1):
                     if string[i : i + j] in string:
                         # print(string[i : i + j])
                         kevin_score += 1
@@ -22,11 +23,12 @@ def minion_game(string):
     # print(kevin_score)
 
     def get_stuart_score(string, score):
+        length = len(string)
         stuart_score = score
         for i, alpha in enumerate(string):
             if alpha not in vowels:
                 # kevin_score += 1
-                for j in range(1, len(string[i : len(string)]) + 1):
+                for j in range(1, len(string[i:length]) + 1):
                     if string[i : i + j] in string:
                         # print(string[i : i + j])
                         stuart_score += 1
